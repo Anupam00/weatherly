@@ -122,9 +122,9 @@ class WeatherHomePage extends StatelessWidget {
                                         SizedBox(height: 10,),
                                         Text(state.message.toString(),
                                           style: GoogleFonts.poppins(
-                                            fontSize: 20,
+                                            fontSize: 22,
                                             fontWeight: FontWeight.w400,
-                                            color: Colors.greenAccent,
+                                            color: Colors.blueGrey,
 
                                           ) ,),
                                       ],
@@ -139,13 +139,22 @@ class WeatherHomePage extends StatelessWidget {
                                   padding: const EdgeInsets.all(6.0),
                                   child: Column(
                                     children: [
-                                      Center(
-                                        child: Text(location!.name.toString(),style: GoogleFonts.poppins(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w500,
-                                        ),),
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 112,),
+                                          Icon(
+                                            Icons.location_on,
+                                            color: Colors.red,
+                                            size: 32,
+                                          ),
+                                          SizedBox(width: 1,),
+                                          Text(location!.name.toString(),style: GoogleFonts.poppins(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w500,
+                                          ),),
+                                        ],
                                       ),
-                                      Text(location!.country.toString(),style: GoogleFonts.poppins(
+                                      Text(location.country.toString(),style: GoogleFonts.poppins(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),),
@@ -256,8 +265,9 @@ class WeatherHomePage extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
+                                      SizedBox(height: 5,),
                                       SizedBox(
-                                        height: 350,
+                                        height: 210,
                                         child: ListView.builder(
                                             itemCount: state.weatherForcastData[0].forecast
                                                 ?.forecastday?[0].hour?.length,
@@ -272,7 +282,7 @@ class WeatherHomePage extends StatelessWidget {
                                                     child: Card(
                                                       color:Colors.lightBlueAccent[200],
                                                       shadowColor: Colors.blueGrey,
-                                                      elevation: 5, // shadow depth
+                                                      elevation: 5,
                                                       child: Padding(
                                                         padding: const EdgeInsets.all(8.0),
                                                         child: Column(
@@ -336,13 +346,18 @@ class WeatherHomePage extends StatelessWidget {
                             case WeatherStatus.error:
                               return Padding(
                                 padding: const EdgeInsets.all(15.0),
-                                child: Center(
-                                  child: Text(state.message.toString(),
-                                    style: GoogleFonts.poppins(
-                                        color: Colors.red[900],
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400),
-                                  ),),
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: 100,),
+                                    Center(
+                                      child: Text(state.message.toString(),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.red.shade700,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400),
+                                      ),),
+                                  ],
+                                ),
                               );
                           }
                         }

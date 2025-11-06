@@ -26,3 +26,15 @@ class NavigationTap extends WeatherEvents{
   List<Object> get props =>[index];
 
 }
+
+class WeeklyTap extends WeatherEvents{
+
+  final int indexTap;
+  final String date;
+  const WeeklyTap({
+    required this.indexTap,
+    required this.date,
+  });
+  @override
+  List<Object> get props =>[indexTap];
+}
