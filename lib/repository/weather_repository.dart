@@ -10,7 +10,7 @@ class WeatherRepository {
   Future<ForcastModel> fetchForcast(String name) async {
     try {
       final response = await http.get(
-        Uri.parse("https://api.weatherapi.com/v1/forecast.json?q=$name&days=1&key=${dotenv.env['API_KEY']}"),
+        Uri.parse("https://api.weatherapi.com/v1/forecast.json?q=$name&days=7&key=${dotenv.env['API_KEY']}"),
         headers: {
           "Accept": "application/json",
         },

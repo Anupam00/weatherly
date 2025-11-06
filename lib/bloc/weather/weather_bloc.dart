@@ -13,6 +13,7 @@ class WeatherBloc extends Bloc<WeatherEvents, WeatherStates> {
     on <CityChanged>(_cityChanged);
     on <SearchData>(_dataCollection);
     on <NavigationTap>(_navigation);
+    on<WeeklyTap>(_weekly);
   }
 
   void _cityChanged(CityChanged event , Emitter <WeatherStates> emit){
@@ -56,6 +57,12 @@ class WeatherBloc extends Bloc<WeatherEvents, WeatherStates> {
 
   void _navigation(NavigationTap event , Emitter<WeatherStates> emit){
     emit(state.copyWith(tapIndex: event.index));
-
   }
+
+  void _weekly(WeeklyTap event , Emitter<WeatherStates> emit){
+    emit(state.copyWith(
+        weeklyIndex: event.indexTap,
+        weeklyDate: event.date));
+  }
+
 }

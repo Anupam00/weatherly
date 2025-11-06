@@ -13,7 +13,6 @@ class AuthRepository{
   Future checkKeyCache()async{
     try{
       storedKey = await flutterStorage.readStorage("apiToken");
-      print (storedKey);
       if (storedKey != null && storedKey!.isNotEmpty){
           final CacheStatus = await checkKey(storedKey!);
           return CacheStatus;

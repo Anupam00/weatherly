@@ -120,8 +120,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     return FloatingActionButton(
                       backgroundColor: Colors.deepPurpleAccent[100],
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => WeatherScreen()));
+                        Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (_) => const WeatherScreen()), (route) => false,
+                        );
                       },
                       child: Icon(Icons.search),
                     );

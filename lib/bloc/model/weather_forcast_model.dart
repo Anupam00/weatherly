@@ -49,34 +49,6 @@ class ForcastModel {
     return data;
   }
 
-  /// ✅ Helper methods for displaying data based on settings
-
-  // String getTemperature(double? celsius) {
-  //   if (celsius == null) return '--';
-  //   if (temperatureUnit == 'F') {
-  //     return '${(celsius * 9 / 5 + 32).toStringAsFixed(1)} °F';
-  //   } else {
-  //     return '${celsius.toStringAsFixed(1)} °C';
-  //   }
-  // }
-  //
-  // String getWindSpeed(double? kph) {
-  //   if (kph == null) return '--';
-  //   if (windSpeedUnit == 'mph') {
-  //     return '${(kph / 1.609).toStringAsFixed(1)} mph';
-  //   } else {
-  //     return '${kph.toStringAsFixed(1)} kph';
-  //   }
-  // }
-  //
-  // String getPressure(double? mb) {
-  //   if (mb == null) return '--';
-  //   if (pressureUnit == 'in') {
-  //     return '${(mb * 0.02953).toStringAsFixed(2)} inHg';
-  //   } else {
-  //     return '${mb.toStringAsFixed(1)} mb';
-  //   }
-  // }
 }
 
 class Location {
