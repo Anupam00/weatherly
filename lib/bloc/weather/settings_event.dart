@@ -20,3 +20,5 @@ class DropDownTap extends SettingsEvent{
   List<Object> get props =>[id,label];
 
 }
+
+class LogOutTap extends SettingsEvent{}

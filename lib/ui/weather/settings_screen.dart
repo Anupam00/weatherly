@@ -1,3 +1,4 @@
+import 'package:WeatherApp/ui/weather/splashpage_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -43,6 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 BlocBuilder<SettingsBloc, SettingsState>(
                 builder: (context, state) {
                   return DropdownMenu(
+                    width: 130,
                     dropdownMenuEntries: [
                     DropdownMenuEntry<SettingsState>(value: SettingsState(id: '1',label:'\u00B0C'), label: 'Celsius'),
                       DropdownMenuEntry<SettingsState>(value: SettingsState(id: '2',label:'\u00B0F'), label: 'Fahrenheit'),
@@ -65,15 +67,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     hintText: "Select an item",
                     enableFilter: true,
                     onSelected: (value) {
-                      print(value!.label);
-                      context.read<SettingsBloc>().add(DropDownTap(id: value.id,label: value.label));
+                      context.read<SettingsBloc>().add(DropDownTap(id: value!.id,label: value.label));
                     }
                     );
                   },
                 ),
-
-
               ],
+            ),
+            SizedBox(height: 150,),
+            BlocListener<SettingsBloc, SettingsState>(
+              listener: (context, state) {
+                if(!state.sessionActive){
+                  Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (_) => const SplashScreen()), (route) => false,
+                  );
+                }
+              },
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurpleAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: (){
+                context.read<SettingsBloc>().add(LogOutTap());
+              },
+                  child: Text("Logout")),
             ),
           ],
         ),

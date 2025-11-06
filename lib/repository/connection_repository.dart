@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 
+
 class SplashRepository {
 
   Future<bool> checkInternet() async {
