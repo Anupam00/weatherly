@@ -1,6 +1,6 @@
-# WeatherApp
+# Weatherly
 
-WeatherApp is a Flutter application that shows current weather, 7-day forecasts, and astronomical information using WeatherAPI. It is intended for learning and development purposes.
+Weatherly is a Flutter application based on Bloc State Management  that shows current weather, 7-day forecasts, and astronomical information using WeatherAPI. It is intended for learning and development purposes.
 
 ---
 
@@ -8,7 +8,6 @@ WeatherApp is a Flutter application that shows current weather, 7-day forecasts,
 - View current weather: temperature, condition, and icon
 - Weekly forecast with day and astronomical info (sunrise, sunset, moonrise, moonset)
 - Scrollable weekly updates with day selection
-- Secure API key support via `.env`
 ---
 ## Requirements
 - Flutter SDK (stable channel)
@@ -21,11 +20,7 @@ Clone the repository:
 git clone https://github.com/Anupam00/weatherly.git
 cd WeatherApp
 ```
-Edit .env and set your key:
-```bash
-API_KEY=your_api_key_here_from_weatherapi_website
-```
-Run in the virtual Emulator:
+Run in git bash:
 ```bash
 flutter pub get
 flutter run

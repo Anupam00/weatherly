@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:WeatherApp/utils/storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../bloc/model/weather_forcast_model.dart';
 
 class WeatherRepository {
   Future<ForcastModel> fetchForcast(String name) async {
+    final FlutterStorage flutterStorage = FlutterStorage();
     try {
+      final storedKey = await flutterStorage.readStorage("apiToken");
       final response = await http.get(
-        Uri.parse("https://api.weatherapi.com/v1/forecast.json?q=$name&days=7&key=${dotenv.env['API_KEY']}"),
+        Uri.parse("https://api.weatherapi.com/v1/forecast.json?q=$name&days=7&key=${storedKey}"),
         headers: {
           "Accept": "application/json",
         },
