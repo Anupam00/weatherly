@@ -6,6 +6,7 @@ import 'package:weather_icons/weather_icons.dart';
 
 import '../../bloc/weather/settings_bloc.dart';
 import '../../bloc/weather/weather_bloc.dart';
+import '../../utils/dateconvert.dart';
 import '../../utils/enums.dart';
 import '../../widgets/weather/textinfo_widget.dart';
 
@@ -134,6 +135,8 @@ class WeatherHomePage extends StatelessWidget {
                             case (WeatherStatus.success):
                               final location  = state.weatherForcastData[0].location;
                               final current  = state.weatherForcastData[0].current;
+                              final dayDate = state.weatherForcastData[0].forecast!.forecastday![0].date;
+                              final dayName = getDayName('$dayDate');
                               return SingleChildScrollView(
                                 child: Padding(
                                   padding: const EdgeInsets.all(6.0),
@@ -158,13 +161,28 @@ class WeatherHomePage extends StatelessWidget {
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),),
-                                      SizedBox(height: 20,),
+                                      SizedBox(height: 25,),
+
+
+                                      TextInfo(
+                                        value: '$dayDate',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+
+                                      TextInfo(
+                                        value: '$dayName',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+
                                       Text(
-                                        DateFormat('y/M/d h:mm a').format(DateTime.parse(location.localtime!)),
+                                        DateFormat('h:mm a').format(DateTime.parse(location.localtime!)),
                                         style: GoogleFonts.poppins(
-                                        fontSize: 20,
+                                        fontSize: 19,
                                         fontWeight: FontWeight.w500,
                                       ),),
+
                                       SizedBox(height: 20,),
 
                                       Image.network(current!.condition!.icon!.startsWith('//') ?
@@ -196,7 +214,7 @@ class WeatherHomePage extends StatelessWidget {
                                       Text(current.condition!.text.toString(),
                                         style: GoogleFonts.poppins(
                                           fontSize: 20,
-                                          fontWeight: FontWeight.w500,
+                                          fontWeight: FontWeight.w600,
                                         ),),
                                       SizedBox(height: 30,),
                                       Row(

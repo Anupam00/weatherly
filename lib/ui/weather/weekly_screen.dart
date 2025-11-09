@@ -277,7 +277,7 @@ class _WeeklyScreenState extends State<WeeklyScreen> {
                                               Icon(WeatherIcons.rain),
                                               SizedBox(width: 15,),
                                               TextInfo(
-                                                value:'Chance of Rain: ${dayData.dailyWillItRain} kph',
+                                                value:'Chance of Rain: ${dayData.dailyWillItRain} %',
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 19,
                                               ),
@@ -292,7 +292,7 @@ class _WeeklyScreenState extends State<WeeklyScreen> {
                                             fontWeight: FontWeight.bold,
                                             fontSize: 30,
                                           ),
-                                          const SizedBox(height: 20),
+                                          const SizedBox(height: 25),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
@@ -338,7 +338,7 @@ class _WeeklyScreenState extends State<WeeklyScreen> {
                                               Icon(WeatherIcons.moonset),
                                               SizedBox(width: 15,),
                                               TextInfo(
-                                                value:'Moonrise: ${astroData?.moonset}',
+                                                value:'Moonset: ${astroData?.moonset}',
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 19,
                                               ),
